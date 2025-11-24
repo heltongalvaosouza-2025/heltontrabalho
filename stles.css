@@ -1,0 +1,341 @@
+/* =========================
+   Reset básico e variáveis
+   ========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Tema claro */
+  --bg: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --primary: #2563eb;
+  --primary-contrast: #ffffff;
+  --border: #e5e7eb;
+  --card: #f9fafb;
+  --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+html.dark {
+  /* Tema escuro */
+  --bg: #0f172a;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --primary: #60a5fa;
+  --primary-contrast: #0f172a;
+  --border: #1f2937;
+  --card: #111827;
+  --shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* =========================
+   Layout e containers
+   ========================= */
+.container {
+  width: min(100%, 1000px);
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+.main {
+  padding-block: 96px 48px; /* compensa header fixo */
+}
+
+/* =========================
+   Header e navegação
+   ========================= */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.header__content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-block: 12px;
+}
+
+.brand {
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav__list {
+  list-style: none;
+  display: flex;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__list a {
+  text-decoration: none;
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
+
+.nav__list a:hover {
+  background: var(--card);
+}
+
+.nav__list a.active {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Botão tema */
+.theme-toggle {
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Toggle mobile */
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.nav-toggle__bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  margin: 4px 0;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: inline-block;
+  }
+  .nav {
+    position: fixed;
+    inset: 60px 0 auto 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    display: none;
+    flex-direction: column;
+    padding: 12px 16px;
+  }
+  .nav.open {
+    display: flex;
+  }
+  .nav__list {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+/* =========================
+   Tipografia e utilitários
+   ========================= */
+h1, h2, h3 {
+  line-height: 1.25;
+  margin: 0 0 12px;
+}
+
+p {
+  margin: 0 0 12px;
+  color: var(--text);
+}
+
+.grid.two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+@media (max-width: 640px) {
+  .grid.two {
+    grid-template-columns: 1fr;
+  }
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-left: 2px solid var(--border);
+}
+.timeline > li {
+  padding-left: 12px;
+  margin: 0 0 16px;
+  position: relative;
+}
+.timeline > li::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+.timeline__desc {
+  color: var(--muted);
+}
+
+/* =========================
+   Cards de projetos
+   ========================= */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+@media (max-width: 960px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+.card__title {
+  margin: 0 0 8px;
+}
+.card__desc {
+  color: var(--muted);
+  margin: 0 0 12px;
+}
+.card__actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* =========================
+   Botões
+   ========================= */
+.button {
+  display: inline-block;
+  border: 1px solid var(--primary);
+  background: var(--primary);
+  color: var(--primary-contrast);
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.button:hover {
+  opacity: 0.9;
+}
+.button--ghost {
+  background: transparent;
+  color: var(--primary);
+}
+
+/* =========================
+   Formulário e erros
+   ========================= */
+.form-group {
+  margin: 0 0 12px;
+}
+label {
+  display: block;
+  margin: 0 0 4px;
+}
+input, textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+}
+input:focus, textarea:focus {
+  outline: 2px solid var(--primary);
+  border-color: var(--primary);
+}
+.error {
+  color: #dc2626;
+  font-size: 0.9rem;
+  min-height: 20px; /* reserva espaço */
+}
+
+/* =========================
+   Footer
+   ========================= */
+.footer {
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+}
+.footer__content {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 16px;
+  color: var(--muted);
+}
+
+/* =========================
+   Modal reutilizável
+   ========================= */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.modal.open {
+  display: flex;
+}
+.modal__dialog {
+  width: min(100%, 520px);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 16px;
+}

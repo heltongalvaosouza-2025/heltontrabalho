@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfólio pessoal - Formação" />
+  <title>Helton | Formação</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container header__content">
+      <a class="brand" href="index.html">Helton</a>
+      <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+      <nav class="nav" aria-label="Menu principal">
+        <ul class="nav__list">
+          <li><a href="index.html">Sobre mim</a></li>
+          <li><a href="formacao.html" class="active">Formação</a></li>
+          <li><a href="portfolio.html">Portfólio</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+        <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">🌙</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main">
+    <section aria-labelledby="formacao-titulo">
+      <h1 id="formacao-titulo">Formação</h1>
+
+      <h2>Educação</h2>
+      <ul class="timeline">
+        <li>
+          <strong>Graduação em Tecnologia/Computação</strong> — Instituição / Ano
+          <div class="timeline__desc">Fundamentos de programação, web, algoritmos e estrutura de dados.</div>
+        </li>
+        <li>
+          <strong>Curso livre: HTML5, CSS3 e JavaScript</strong> — Plataforma / Ano
+          <div class="timeline__desc">Construção de interfaces, responsividade e interatividade sem frameworks.</div>
+        </li>
+      </ul>
+
+      <h2>Idiomas</h2>
+      <ul class="grid two">
+        <li><strong>Português:</strong> nativo.</li>
+        <li><strong>Inglês:</strong> intermediário.</li>
+        <li><strong>Espanhol:</strong> básico.</li>
+      </ul>
+
+      <h2>Certificações</h2>
+      <ul class="grid two">
+        <li><strong>Certificado A:</strong> descrição resumida.</li>
+        <li><strong>Certificado B:</strong> descrição resumida.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__content">
+      <small>&copy; 2025 Helton. Todos os direitos reservados.</small>
+      <small>Publicado via GitHub Pages.</small>
+    </div>
+  </footer>
+
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+    <div class="modal__dialog">
+      <h3 id="modal-title">Mensagem</h3>
+      <p id="modal-message">...</p>
+      <button class="button" data-close-modal>Fechar</button>
+    </div>
+  </div>
+</body>
+</html>
